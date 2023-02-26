@@ -1,0 +1,23 @@
+---
+- name: Chapter01 - Basic Playbook
+  hosts: servers
+  become: true
+  tasks:
+    - name: Update apt-get repo and cache
+      ansible.builtin.apt:
+        update-cache: true
+        force_apt_get: true
+        cache_valid_time: 3600
+    - name: Upgrade all apt packages
+      ansible.builtin.apt:
+        upgrade: dist
+        force_apt_get: true
+    - name: Ensure chrony is installed
+      ansible.builtin.apt:
+        name: chrony
+        state: present
+    - name: Ensure chrony is running
+      ansible.builtin.service:
+        name: chronyd
+        state: started
+        enabled: true
