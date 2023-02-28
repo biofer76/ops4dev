@@ -1,3 +1,5 @@
 # Custom Dictionary Words
 chrony
 chronyd
+lineinfile
+webserver
