@@ -1,0 +1,9 @@
+---
+- name: Chapter03 - Variables and Facts
+  hosts: servers
+  gather_facts: true
+  become: true
+  tasks:
+    - name: Print system distribution with Fact access
+      ansible.builtin.debug:
+        msg: "Distribution Fact: {{ ansible_facts['distribution'] }}"

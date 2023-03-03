@@ -1,0 +1,14 @@
+---
+- name: Chapter03 - Variables and Facts
+  hosts: servers
+  become: true
+  tasks:
+    - name: Print system distribution with Fact access
+      ansible.builtin.debug:
+        msg: "Distribution Fact: {{ ansible_facts['distribution'] }}"
+    - name: Print system distribution with variable access
+      ansible.builtin.debug:
+        msg: "Distribution Variable: {{ ansible_distribution }}"
+    - name: Print system date and time
+      ansible.builtin.debug:
+        msg: "System datetime: {{ ansible_facts['date_time']['iso8601'] }}"

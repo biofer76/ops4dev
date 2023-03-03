@@ -1,0 +1,12 @@
+---
+- name: Chapter03 - Variables and Facts
+  hosts: servers
+  become: true
+  vars:
+    host_name: server02
+    host_ip: 192.168.1.2
+  tasks:
+    - name: Update hosts file
+      ansible.builtin.lineinfile:
+        path: /etc/hosts
+        line: "{{ host_ip }} {{ host_name }}"
